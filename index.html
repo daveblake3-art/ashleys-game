@@ -973,7 +973,8 @@ function showLevelComplete() {
   gamePhase = 'levelComplete';
   
   // Level 10 special: strip tease animation!
-  if (level === 10 && !stripActive) {
+  if (level === 10 && !stripActive && !stripSeen) {
+    stripSeen = true;
     showStripTease();
     return; // Strip tease will call showLevelComplete again when done
   }
@@ -1251,6 +1252,7 @@ document.getElementById('next-btn').addEventListener('click', () => {
 // ── Strip tease animation (Level 10 reward) ──
 let stripPhase = 0;
 let stripActive = false;
+let stripSeen = false;
 
 function showStripTease() {
   stripPhase = 0;
